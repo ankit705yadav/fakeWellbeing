@@ -342,7 +342,7 @@
                 { label: "Instagram", value: 100, color: "#facc15" }, // yellow-400
                 { label: "Reddit", value: 80, color: "#a3e635" }, // lime-400
                 { label: "YouTube", value: 72, color: "#4ade80" }, // green-400
-                { label: "WhatsApp", value: 60, color: "#6ee7b7" }, // emerald-300
+                { label: "Drive", value: 60, color: "#6ee7b7" }, // emerald-300
                 { label: "Threads", value: 40, color: "#a7f3d0" }, // emerald-200
                 { label: "Photos", value: 28, color: "#d1fae5" }, // emerald-100
                 { label: "Other", value: 20, color: "#fef3c7" }, // amber-100
@@ -503,6 +503,12 @@
 
             // Setup event listeners and initial state
             window.onload = () => {
+                // === ADDED THIS SNIPPET ===
+                if (window.innerWidth <= 920) {
+                    alert("For best experience use desktop mode");
+                }
+                // === END SNIPPET ===
+
                 populateInitialInputs();
                 updateStats(); // Initial draw
                 addAppBtn.addEventListener("click", () => addAppRow());
