@@ -4,9 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Fake Wellbeing</title>
-        <!-- Tailwind CSS for styling -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Google Fonts for the "Inter" font family -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -26,11 +24,11 @@
                 gap: 2rem;
             }
             .mobile-screen {
-                width: 100%;
-                max-width: 420px;
+                width: 420px;
+                /*min-width: 420px;*/
+                /*max-width: 420px;*/
                 height: 844px;
                 background-color: #1c1b1f; /* The main background color from the screenshot */
-                /*border-radius: 40px;*/
                 box-shadow:
                     0 10px 30px rgba(0, 0, 0, 0.5),
                     inset 0 0 2px rgba(255, 255, 255, 0.1);
@@ -145,11 +143,24 @@
                 align-items: center;
                 justify-content: center;
             }
+
+            /* === ADDED THIS SECTION FOR MOBILE RESPONSIVENESS === */
+            @media (max-width: 920px) {
+                body {
+                    flex-direction: column-reverse; /* Stack elements vertically and reverse order */
+                    align-items: center;
+                    padding: 1rem;
+                }
+                .controls-container {
+                    margin-top: 0; /* Remove the large top margin on mobile */
+                }
+            }
         </style>
     </head>
     <body class="bg-gray-800 flex justify-center items-start min-h-screen">
-        <!-- Data Controls Section -->
-        <div class="custom-card-bg rounded-3xl p-5 w-full max-w-xs mt-16">
+        <div
+            class="custom-card-bg rounded-3xl p-5 w-full max-w-xs mt-16 controls-container"
+        >
             <h2
                 class="text-lg font-medium custom-text-primary mb-4 text-center"
             >
@@ -184,9 +195,7 @@
             <h3 class="font-medium custom-text-primary mb-3">
                 App Usage (minutes)
             </h3>
-            <div id="appDataInputs" class="space-y-2 mb-4 pr-2">
-                <!-- App data inputs will be generated here -->
-            </div>
+            <div id="appDataInputs" class="space-y-2 mb-4 pr-2"></div>
 
             <button
                 id="addAppBtn"
@@ -201,66 +210,11 @@
         </div>
 
         <div class="mobile-screen">
-            <!-- Status Bar -->
-            <div class="status-bar">
-                <!-- <span>11:36</span>
-                <div class="flex items-center space-x-1.5">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M15.384 6.115a.485.485 0 0 0-.047-.736C12.544 3.255 8.46 2.5 5.21 2.5c-3.25 0-7.334.755-10.128 2.879a.485.485 0 0 0-.047.736A12.02 12.02 0 0 0 5.21 6.5c3.25 0 7.334-.755 10.128-2.879a.485.485 0 0 0 .046-.506zM5.21 8c-3.25 0-7.334.755-10.128 2.879a.485.485 0 0 0-.047.736A12.02 12.02 0 0 0 5.21 12.5c3.25 0 7.334-.755 10.128-2.879a.485.485 0 0 0-.047-.736A12.02 12.02 0 0 0 5.21 8zm0-3a1.94 1.94 0 0 1-.502-.054A10.56 10.56 0 0 1 5.21 5c3.065 0 6.94-.71 9.6-2.527a.485.485 0 0 0 .023-.655A13.04 13.04 0 0 0 5.21 0C2.146 0-1.734.71-4.4 2.527a.485.485 0 0 0 .023.655A10.56 10.56 0 0 1 4.708 5.054 1.94 1.94 0 0 1 5.21 5z"
-                        />
-                    </svg>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
-                        />
-                    </svg>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M10.5 1a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V1.5a.5.5 0 0 0-.5-.5h-2zm-3 2a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V3.5a.5.5 0 0 0-.5-.5h-2zm-3 4a.5.5 0 0 0-.5.5v6a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V7.5a.5.5 0 0 0-.5-.5h-2z"
-                        />
-                    </svg>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        fill="currentColor"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            d="M5.5 3.834V2.75a.75.75 0 0 1 1.5 0v1.084a.5.5 0 0 1-.3.463l-.2.1a.5.5 0 0 1-.6 0l-.2-.1a.5.5 0 0 1-.3-.463zM8.5 3.834V2.75a.75.75 0 0 1 1.5 0v1.084a.5.5 0 0 1-.3.463l-.2.1a.5.5 0 0 1-.6 0l-.2-.1a.5.5 0 0 1-.3-.463z"
-                        />
-                        <path
-                            fill-rule="evenodd"
-                            d="M4 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H4zm8 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8z"
-                        />
-                    </svg>
-                </div> -->
-            </div>
+            <div class="status-bar"></div>
 
             <div class="screen-content">
                 <div class="w-full max-w-sm mx-auto">
-                    <!-- Header Section -->
                     <header class="flex justify-between items-center mb-6">
-                        <!-- Back Arrow Icon -->
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -276,7 +230,6 @@
                             <line x1="19" y1="12" x2="5" y2="12"></line>
                             <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
-                        <!-- Three Dots Menu Icon -->
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -295,7 +248,6 @@
                         </svg>
                     </header>
 
-                    <!-- Main Content -->
                     <main>
                         <h1
                             class="text-3xl font-semibold custom-text-primary mb-6 mt-16"
@@ -303,18 +255,15 @@
                             Digital Wellbeing
                         </h1>
 
-                        <!-- App Activity Card -->
                         <div
                             class="custom-card-bg rounded-3xl p-6 flex flex-col items-center mb-6"
                         >
-                            <!-- Donut Chart and Labels Container -->
                             <div class="relative w-64 h-64 mb-6">
                                 <canvas
                                     id="appUsageChart"
                                     width="256"
                                     height="256"
                                 ></canvas>
-                                <!-- Center Text -->
                                 <div
                                     id="screenTimeDisplay"
                                     class="absolute inset-0 flex flex-col items-center justify-center"
@@ -327,10 +276,8 @@
                                         >6h 38m</span
                                     >
                                 </div>
-                                <!-- App Labels will be positioned by JavaScript -->
                             </div>
 
-                            <!-- View Details Button -->
                             <button
                                 class="w-full py-3 border custom-border rounded-full text-center custom-text-primary hover:bg-white/5 transition-colors duration-300"
                             >
@@ -338,7 +285,6 @@
                             </button>
                         </div>
 
-                        <!-- Unlocks and Notifications Cards -->
                         <div class="grid grid-cols-2 gap-4 mb-4">
                             <div class="custom-card-bg rounded-3xl p-5">
                                 <p
@@ -362,13 +308,11 @@
                             </div>
                         </div>
 
-                        <!-- Info Text -->
                         <p class="text-xs custom-text-secondary px-2 mb-8">
                             This data is from your personal profile and doesn't
                             include other profile activities.
                         </p>
 
-                        <!-- Ways to Disconnect Section -->
                         <div class="mb-8">
                             <h2
                                 class="text-lg font-medium custom-text-primary mb-3"
@@ -388,7 +332,6 @@
                 </div>
             </div>
 
-            <!-- Home Indicator -->
             <div class="home-indicator"></div>
         </div>
 
