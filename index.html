@@ -11,6 +11,8 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
+        <!-- Add in head -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
         <style>
             /* Custom styles to match the screenshot's aesthetic and create a mobile screen frame */
             body {
@@ -30,9 +32,9 @@
                 /* === END MODIFICATION === */
                 height: 844px;
                 background-color: #1c1b1f; /* The main background color from the screenshot */
-                box-shadow:
+                /*box-shadow:
                     0 10px 30px rgba(0, 0, 0, 0.5),
-                    inset 0 0 2px rgba(255, 255, 255, 0.1);
+                    inset 0 0 2px rgba(255, 255, 255, 0.1);*/
                 position: relative;
                 overflow: hidden;
                 display: flex;
@@ -207,6 +209,10 @@
 
             <button id="updateBtn" class="control-btn w-full">
                 Update Stats
+            </button>
+
+            <button id="downloadBtn" class="control-btn w-full mt-3">
+                Download Screenshot
             </button>
         </div>
 
@@ -514,6 +520,20 @@
                 addAppBtn.addEventListener("click", () => addAppRow());
                 updateBtn.addEventListener("click", updateStats);
             };
+
+            document
+                .getElementById("downloadBtn")
+                .addEventListener("click", () => {
+                    const target = document.querySelector(".mobile-screen");
+                    html2canvas(target, { backgroundColor: null }).then(
+                        (canvas) => {
+                            const link = document.createElement("a");
+                            link.download = "mobile-screen.png";
+                            link.href = canvas.toDataURL("image/png");
+                            link.click();
+                        },
+                    );
+                });
         </script>
     </body>
 </html>
