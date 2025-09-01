@@ -525,8 +525,17 @@
                 .getElementById("downloadBtn")
                 .addEventListener("click", () => {
                     const target = document.querySelector(".mobile-screen");
+                    const originalBorder = target.style.border; // Save original border
+
+                    // Remove border before capture
+                    target.style.border = "none";
+
                     html2canvas(target, { backgroundColor: null }).then(
                         (canvas) => {
+                            // Restore border
+                            target.style.border = originalBorder;
+
+                            // Trigger download
                             const link = document.createElement("a");
                             link.download = "mobile-screen.png";
                             link.href = canvas.toDataURL("image/png");
